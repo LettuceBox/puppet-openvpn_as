@@ -13,5 +13,4 @@ class openvpn_as::service {
     ensure => $openvpn_as::service_ensure,
     enable => true,
   }
-
 }

@@ -1,12 +1,14 @@
 # Variables from Puppet:
-admin_ui_https_port                  = <%= @admin_ui_https_port %>
-admin_users                          = <%= @admin_users %>
-cs_https_port                        = <%= @cs_https_port %>
-host_name                            = <%= @host_name %>
-use_custom_port_config               = <%= @use_custom_port_config %>
-vpn_client_basic                     = <%= @vpn_client_basic %>
-vpn_client_routing_reroute_dns       = <%= @vpn_client_routing_reroute_dns %>
-vpn_client_routing_reroute_gw        = <%= @vpn_client_routing_reroute_gw %>
-vpn_server_google_auth_enable        = <%= @vpn_server_google_auth_enable %>
-vpn_server_port_share_service        = <%= @vpn_server_port_share_service %>
-vpn_server_routing_private_network_0 = <%= @vpn_server_routing_private_network_0 %>
+admin_ui_https_port                  = <%= scope['openvpn_as::config::server::admin_ui_https_port'] %>
+admin_users                          = <%= scope['openvpn_as::config::server::admin_users'] %>
+cs_https_port                        = <%= scope['openvpn_as::config::server::cs_https_port'] %>
+host_name                            = <%= scope['openvpn_as::config::host_name'] %>
+use_custom_port_config               = <%= scope['openvpn_as::config::server::use_custom_port_config'] %>
+vpn_client_basic                     = <%= scope['openvpn_as::config::client::vpn_client_basic'] %>
+vpn_client_routing_reroute_dns       = <%= scope['openvpn_as::config::client::vpn_client_routing_reroute_dns'] %>
+vpn_client_routing_reroute_gw        = <%= scope['openvpn_as::config::client::vpn_client_routing_reroute_gw'] %>
+vpn_server_google_auth_enable        = <%= scope['openvpn_as::config::server::vpn_server_google_auth_enable'] %>
+vpn_server_port_share_service        = <%= scope['openvpn_as::config::server::vpn_server_port_share_service'] %>
+<% scope['openvpn_as::config::network::vpn_server_routing_private_networks'].each_with_index do |subnet, id| -%>
+openvpn-vpn-server-routing-private-network-<%= id %>        = <%= subnet %>
+<% end -%>

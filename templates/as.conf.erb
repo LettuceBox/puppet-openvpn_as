@@ -22,16 +22,16 @@ run_start_retry.resample=10
 sa.show_c2s_routes=true
 
 # certificates database
-certs_db=<%= @openvpn_certs_db %>
+certs_db=<%= scope['openvpn_as::config::db::openvpn_certs_db'] %>
 
 # user properties DB
-user_prop_db=<%= @openvpn_user_prop_db %>
+user_prop_db=<%= scope['openvpn_as::config::db::openvpn_user_prop_db'] %>
 
 # configuration DB
-config_db=<%= @openvpn_config_db %>
+config_db=<%= scope['openvpn_as::config::db::openvpn_config_db'] %>
 
 # log DB
-log_db=<%= @openvpn_log_db %>
+log_db=<%= scope['openvpn_as::config::db::openvpn_log_db'] %>
 
 # wait this many seconds between failed retries
 db_retry.interval=1
